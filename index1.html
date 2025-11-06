@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portofolio Hilal Haekal Rahman - System Analyst & Fresh Graduate IT"
+    />
+    <title>Hilal Haekal Rahman | System Analyst</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --navy: #0a192f;
+        --gold: #d4af37;
+        --light: #ccd6f6;
+        --gray: #8892b0;
+        --dark: #020c1b;
+        --bg: var(--navy);
+        --text: var(--light);
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --accent: var(--gold);
+        --border: rgba(212, 175, 55, 0.2);
+      }
+      [data-theme="light"] {
+        --bg: #f8f9fa;
+        --text: #212529;
+        --card-bg: #ffffff;
+        --accent: #b8972a;
+        --navy: #343a40;
+        --gray: #6c757d;
+        --border: rgba(184, 151, 42, 0.2);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        transition: background 0.4s, color 0.4s;
+        overflow-x: hidden;
+      }
+      .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 0 1.5rem;
+      }
+
+      /* Hamburger Menu */
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        z-index: 1002;
+        padding: 0.6rem;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(5px);
+      }
+      .hamburger i {
+        font-size: 1.8rem;
+        color: white !important;
+      }
+
+      /* Nav Links */
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+        transition: all 0.4s ease;
+      }
+      .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        font-size: 0.95rem;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        /* background: var(--accent); */
+        transition: 0.3s;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-links .download-cv {
+        background: var(--accent);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .nav-links .download-cv:hover {
+        background: #e6c258;
+      }
+
+      /* Theme Toggle */
+      .theme-toggle {
+        position: fixed;
+        bottom: 2rem;
+        right: 1.5rem;
+        background: var(--card-bg);
+        border: 2px solid var(--accent);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1001;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
+      .theme-toggle i {
+        font-size: 1.3rem;
+        color: var(--accent);
+      }
+
+      /* Navbar */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1.2rem 0;
+        background: var(--bg);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        transition: 0.3s;
+        border-bottom: 1px solid var(--border);
+      }
+      nav.scrolled {
+        padding: 0.8rem 0;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-weight: 700;
+        font-size: 1.4rem;
+        color: var(--accent);
+      }
+
+      /* Hero */
+      header {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding-top: 80px;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+      .hero-text h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      .hero-text h1 span {
+        color: var(--accent);
+      }
+      .hero-text p {
+        font-size: 1.1rem;
+        color: var(--gray);
+        margin: 1rem 0;
+      }
+      .btn {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        padding: 0.8rem 1.8rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 1rem;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        background: #e6c258;
+        transform: translateY(-3px);
+      }
+      .hero-img img {
+        width: 550px;
+        height: 600px;
+        border-radius: 100%;
+        border: 5px solid var(--accent);
+        object-fit: cover;
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+      }
+
+      /* Section */
+      section {
+        padding: 4rem 0;
+      }
+      .section-title {
+        text-align: center;
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+        color: var(--text);
+      }
+      .section-title span {
+        color: var(--accent);
+      }
+
+      /* Timeline */
+      .timeline {
+        position: relative;
+        max-width: 900px;
+        margin: auto;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background: var(--accent);
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -1px;
+      }
+      .timeline-item {
+        padding: 1rem 2rem;
+        position: relative;
+        width: 50%;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: 0.6s;
+      }
+      .timeline-item.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: right;
+        padding-right: 3rem;
+      }
+      .timeline-item:nth-child(even) {
+        left: 50%;
+        padding-left: 3rem;
+      }
+      .timeline-content {
+        background: var(--card-bg);
+        padding: 1.5rem;
+        border-radius: 10px;
+        border-left: 4px solid var(--accent);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+      .timeline-content h3 {
+        color: var(--accent);
+        margin-bottom: 0.5rem;
+      }
+      .timeline-content h4 {
+        color: var(--text);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+      .timeline-content span {
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+      .timeline-content ul {
+        margin-top: 0.8rem;
+        padding-left: 1.2rem;
+        color: var(--gray);
+        font-size: 0.95rem;
+      }
+
+      /* Skills */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+      }
+      .skill-card {
+        background: var(--card-bg);
+        padding: 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        border: 1px solid var(--border);
+      }
+      .skill-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+      }
+      .skill-card i {
+        font-size: 2.2rem;
+        color: var(--accent);
+        margin-bottom: 0.8rem;
+      }
+
+      /* Contact */
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--gray);
+        font-size: 0.95rem;
+      }
+      .contact-item i {
+        color: var(--accent);
+        width: 20px;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--gray);
+        font-size: 0.9rem;
+        border-top: 1px solid var(--border);
+      }
+
+      /* RESPONSIF */
+      @media (max-width: 992px) {
+        .hamburger {
+          display: block !important;
+        }
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          right: 0;
+          width: 100%;
+          height: calc(100vh - 70px);
+          background: var(--bg);
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          padding-top: 2rem;
+          transform: translateX(100%);
+          transition: transform 0.4s ease;
+          z-index: 999;
+          border-top: 1px solid var(--border);
+        }
+        .nav-links.active {
+          transform: translateX(0);
+        }
+        .nav-links a {
+          margin: 1rem 0;
+          font-size: 1.2rem;
+          width: 100%;
+          text-align: center;
+          padding: 0.8rem 0;
+          color: white !important;
+        }
+        .nav-links .download-cv {
+          width: 80%;
+          margin: 1.5rem auto;
+          text-align: center;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .hero-text h1 {
+          font-size: 2.2rem;
+        }
+        .hero-img img {
+          width: 180px;
+          height: 180px;
+        }
+        .timeline::before {
+          left: 30px;
+        }
+        .timeline-item {
+          width: 100%;
+          padding-left: 60px;
+          padding-right: 0;
+          left: 0 !important;
+          text-align: left !important;
+        }
+        .timeline-item::before {
+          content: "";
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          background: var(--accent);
+          border-radius: 50%;
+          left: 23px;
+          top: 30px;
+          z-index: 1;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .theme-toggle {
+          bottom: 1.5rem;
+          right: 1rem;
+          width: 48px;
+          height: 48px;
+        }
+      }
+      @media (max-width: 480px) {
+        .hero-text h1 {
+          font-size: 1.9rem;
+        }
+        .btn {
+          padding: 0.7rem 1.5rem;
+          font-size: 0.9rem;
+        }
+        .contact-info {
+          flex-direction: column;
+          align-items: center;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body data-theme="dark">
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+      <i class="fas fa-moon"></i>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+      <div class="container nav-container">
+        <div class="logo">Hilal</div>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#organization">Organization</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+          <a
+            href="https://drive.google.com/file/d/1ABC123XYZ/view?usp=sharing"
+            target="_blank"
+            class="download-cv"
+          >
+            <i class="fas fa-download"></i> Download CV
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header id="home">
+      <div class="container hero">
+        <div class="hero-text">
+          <h1>Hilal Haekal <span>Rahman</span></h1>
+          <p>System Analyst & Fresh Graduate IT</p>
+          <p>
+            083141674712 | hilalgtg99@gmail.com |
+            <a
+              href="https://www.linkedin.com/in/hilal-haekal-rahman011002"
+              target="_blank"
+              style="color: var(--accent)"
+              >LinkedIn</a
+            >
+          </p>
+          <p>Kota Serang, Banten</p>
+          <a href="#contact" class="btn">Hubungi Saya</a>
+        </div>
+        <div class="hero-img" style="text-align: center">
+          <img src="Fotoku BG Merah.png" alt="Hilal Haekal Rahman" />
+        </div>
+      </div>
+    </header>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">Tentang <span>Saya</span></h2>
+        <p
+          style="
+            text-align: center;
+            color: var(--gray);
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.05rem;
+          "
+        >
+          Saya adalah Lulusan Sarjana (S1) Sistem Informasi dari
+          <strong>Universitas Banten Jaya (UNBAJA)</strong> dengan IPK
+          <strong>3.81/4.00</strong>. Memiliki kemampuan analisis yang baik,
+          tanggung jawab tinggi, disiplin, serta komunikasi efektif. Terbiasa
+          bekerja sesuai prosedur dan tenggat waktu, mudah beradaptasi, dan
+          terampil bekerja tim maupun mandiri. Siap berkontribusi untuk
+          efisiensi operasional dan pelayanan prima di perusahaan.
+        </p>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Pengalaman <span>Kerja</span></h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Magang / System Analyst</h3>
+              <h4>Kantor Notaris Astrid Nur Mariska S.H., M.Kn.</h4>
+              <span>Mei 2024 – Jun 2024</span>
+              <ul>
+                <li>Inventarisasi & tata kelola dokumen hukum</li>
+                <li>Analisis bottleneck sistem pengarsipan</li>
+                <li>Prototipe arsip digital terstruktur</li>
+                <li>Prosedur pencatatan pengeluaran operasional</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Magang / System Analyst</h3>
+              <h4>Bank BSI KCP Kragilan</h4>
+              <span>Okt 2024 – Des 2024</span>
+              <ul>
+                <li>Analisis Sistem Manajemen Aset</li>
+                <li>Use Case & Activity Diagram (StarUML)</li>
+                <li>Panduan pengguna & saran perbaikan</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title">Pendidikan</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Universitas Banten Jaya</h3>
+              <span>Sep 2021 – Agt 2025</span>
+              <p><strong>S1 Sistem Informasi, IPK 3.81/4.00</strong></p>
+              <ul>
+                <li>Aplikasi Penjualan (HTML)</li>
+                <li>Desain Poster & Feed Instagram (Canva)</li>
+                <li>Aplikasi CRUD (PHP)</li>
+                <li>Analisis Sistem Aset (Flowchart, UML)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Organization -->
+    <section id="organization">
+      <div class="container">
+        <h2 class="section-title">Pengalaman <span>Organisasi</span></h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Ketua Divisi Internal - Himasi</h3>
+              <span>Nov 2023 – Okt 2024</span>
+              <ul>
+                <li>Mengelola administrasi & operasional</li>
+                <li>Koordinasi tim & laporan kegiatan</li>
+              </ul>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Wakil Bendahara</h3>
+              <span>Nov 2023 – Okt 2024</span>
+              <ul>
+                <li>Pencatatan keuangan & laporan berkala</li>
+                <li>Perencanaan anggaran kegiatan</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills & <span>Achievements</span></h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <i class="fas fa-trophy"></i>
+            <h3>Juara 1 Skripsi</h3>
+            <p>Sistem SAW Aset BSI KCP Kragilan</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-certificate"></i>
+            <h3>BNSP 2025</h3>
+            <p>Junior Network Administrator</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-code"></i>
+            <h3>Hard Skills</h3>
+            <p>MS Office, UML, PHP, HTML</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-users"></i>
+            <h3>Soft Skills</h3>
+            <p>Komunikasi, Analisis, Tim</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Hubungi <span>Saya</span></h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-phone"></i> 0831-4167-4712
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:hilalgtg99@gmail.com" style="color: var(--gray)"
+              >hilalgtg99@gmail.com</a
+            >
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-linkedin"></i>
+            <a
+              href="https://www.linkedin.com/in/hilal-haekal-rahman011002"
+              target="_blank"
+              style="color: var(--gray)"
+              >LinkedIn</a
+            >
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i> Kota Serang, Banten
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2025 Hilal Haekal Rahman. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // HAMBURGER MENU
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("navLinks");
+      const icon = hamburger.querySelector("i");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-times");
+      });
+
+      // Tutup menu saat klik link
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          icon.classList.replace("fa-times", "fa-bars");
+        });
+      });
+      // Close menu on link click
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          icon.classList.replace("fa-times", "fa-bars");
+        });
+      });
+
+      // Theme Toggle
+      const themeToggle = document.getElementById("themeToggle");
+      const body = document.body;
+      const themeIcon = themeToggle.querySelector("i");
+
+      if (localStorage.getItem("theme") === "light") {
+        body.setAttribute("data-theme", "light");
+        themeIcon.classList.replace("fa-moon", "fa-sun");
+      }
+
+      themeToggle.addEventListener("click", () => {
+        if (body.getAttribute("data-theme") === "light") {
+          body.setAttribute("data-theme", "dark");
+          themeIcon.classList.replace("fa-sun", "fa-moon");
+          localStorage.setItem("theme", "dark");
+        } else {
+          body.setAttribute("data-theme", "light");
+          themeIcon.classList.replace("fa-moon", "fa-sun");
+          localStorage.setItem("theme", "light");
+        }
+      });
+
+      // Navbar scroll
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        navbar.classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      // Timeline animation
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("show");
+          });
+        },
+        { threshold: 0.3 }
+      );
+      document
+        .querySelectorAll(".timeline-item")
+        .forEach((item) => observer.observe(item));
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document
+            .querySelector(this.getAttribute("href"))
+            .scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    </script>
+  </body>
+</html>
